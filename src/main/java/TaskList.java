@@ -13,21 +13,49 @@ public class TaskList {
     }
 
     public void addTask(String newTaskDescription, int location){
-        if(this.size == 1){
-            Task newTask = new Task(newTaskDescription);
-            head.setNext(newTask);
+        Task newTask = new Task(newTaskDescription);
+        if (head == null) {
+            createLinkedList(newTaskDescription);
+            return;
+        } else if (location == 0) {
+            newTask.setNext(head);
+            head = newTask;
+        } else if (location >= size) {
+            tail.setNext(newTask);
             newTask.setNext(null);
+            tail = newTask;
+        } else {
+            Task tempTask = head;
+            int index = 0;
+            while (index < location - 1) {
+                tempTask = tempTask.getNext();
+                index++;
+            }
+            Task nextTask = tempTask;
+            tempTask.setNext(nextTask);
         }
-        //if at the end
-        this.size = this.size +1;
-
-
-
+        size++;
     }
     public void markTaskComplete(int taskLocation){
-
-
+        Task targetTask = searchAndReturnTaskByLocation(taskLocation);
+        targetTask.markTaskComplete();
     }
+
+    public Task searchAndReturnTaskByLocation(int location){
+        if (this.head != null){
+            Task tempTask = this.head;
+            for (int i =0; i<this.size; i++){
+                if (i == location){
+                    System.out.println("Found the Task: " + tempTask.getTaskDescription() + " at location: " + i + "\n");
+                    return tempTask.getTask();
+                }
+                tempTask = tempTask.getNext();
+            }
+        }
+        System.out.println("Task not found");
+        return null;
+    }
+
     public void printAllTasks(){
         if (head == null) {
             System.out.println("SLL does not exist");
