@@ -64,7 +64,7 @@ public class TaskList {
             for (int i = 0; i < size; i++) {
                 System.out.print(tempTask.getTaskDescription() + "  "+ tempTask.getCompletionStatusString());
                 if (i != size -1 ){
-                    System.out.print(" -> ");
+                    System.out.print(" || ");
                 }
                 tempTask = tempTask.getNext();
             }
