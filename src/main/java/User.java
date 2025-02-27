@@ -27,12 +27,12 @@ public class User {
         return userTaskList;
     }
 
-    public void addTask(Task newTask){
-        this.userTaskList.addTask(newTask);
+    public void addTask(String newTaskDescription, int location){
+        this.userTaskList.addTask(newTaskDescription, location);
     }
 
-    public void markTasKComplete(String description){
-       userTaskList.markTaskComplete(description);
+    public void markTasKComplete(int taskLocation){
+       userTaskList.markTaskComplete(taskLocation);
     }
 
     public void printAllTasks(){

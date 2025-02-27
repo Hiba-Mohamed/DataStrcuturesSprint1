@@ -15,12 +15,17 @@ public class Task {
         this.taskDescription = newDescription;
     }
 
+
     public void setNext (Task newNext){
         this.next = newNext;
     }
 
+    public Task getNext (){
+       return this.next;
+    }
+
     public Task getTask(){
-        return this.next;
+        return this;
     }
 
     public void setComplete(boolean newComplete) {
@@ -33,6 +38,14 @@ public class Task {
 
     public boolean getCompletionStatus(){
         return this.complete;
+    }
+    public String getCompletionStatusString(){
+        if(this.complete){
+            return "Completed";
+        }
+        else {
+            return "In Progress";
+        }
     }
     public void markTaskComplete (){
         this.complete = true;
